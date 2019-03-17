@@ -1,0 +1,33 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>uygulama sekmesi</title>
+</head>
+<body>
+
+    <hr />
+    <table <thead><tr><th scope="col">ActionResult Adı</th><th scope="col">Açıklama</th><th scope="col">Metod Adı</th></tr></thead><tbody><tr class="alt"><td>ContentResult</td><td>Parametre olarak belirtilen içerik geri dönderilir.</td><td>Content</td></tr><tr><td>EmptyResult</td><td>Hiçbirşey döndermeyen result türüdür</td><td><span style="font-family: 'trebuchet ms'; line-height: normal; text-align: justify;">new EmptyResult</span></td></tr><tr class="alt"><td>FileContentResult / FilePathResult / FileStreamResult</td><td>Sonuç olarak dosya içeriği, dosya yolu ve dosya döndüren Result türleridir.</td><td></td></tr><tr><td>HttpUnauthhorizedResult</td><td>Üye sistemlerinde üye girişi yapılmasını sağlayan result türüdür.</td><td>new <span style="font-family: 'trebuchet ms'; line-height: normal; text-align: justify;">HttpUnauthorizedResult</span></td></tr><tr class="alt"><td>JavascriptResult</td><td>Parametre olarak girdiğimiz script kodlarını script etiketli olarak dönderen Result türüdür</td><td>JavaScipt</td></tr><tr><td>JsonResult</td><td>Özellikle Ajav ve Javascript işlemlerinde kullanacağımız verilerimizi json olarak döndüren Result türüdür.</td><td>Json</td></tr><tr class="alt"><td>RedirectResult</td><td>Parametre olarak geçilen adresi yönlendirme yapan Result türüdür</td><td>Redirect</td></tr><tr><td>RedirectToRouteResult</td><td>Diğer controller ve Action’lara yönlendirme yapabileceğimiz Result türüdür.</td><td><span style="font-family: 'trebuchet ms'; line-height: normal; text-align: justify;">RedirectToAction / </span>RedirectToRoute</td></tr><tr class="alt"><td>ViewResult</td><td>Yazdığımız ActionResult ile aynı ada sahip View veya parametre olarka geçilen view’i geri döndüren Result türüdür.</td><td>View</td></tr><tr><td>PartialViewResult</td><td>Yazdığımız ActionResult ile aynı ada sahip PartialView veya parametre olarak geçilen PartialView’i geri döndüren Result türüdür.</td><td>PartialView</td></tr></tbody></table>
+    <hr />
+    <div>
+        <p>
+            @Html.ActionLink("Content", "Contentdata", "Home")
+            /
+            @Html.ActionLink("Json Veri", "Jsondata", "Home")
+            <!--yada kullanılabilir     <a href="~/Home/Jsondata/">Json Veri a etiketi</a>      -->
+            /
+            @Html.ActionLink("HttpNotResult", "Resultdata", "Home")
+        </p>
+    </div>
+
+
+
+
+</body>
+</html>
