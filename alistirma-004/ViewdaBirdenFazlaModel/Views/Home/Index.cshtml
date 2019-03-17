@@ -1,0 +1,23 @@
+﻿@model ViewdaBirdenFazlaModel.ViewModels.DepartmanPersonelViewModels
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Başlık</title>
+</head>
+<body>
+    <div>@Model.Departman.Dep_id-@Model.Departman.Dep_Ad</div>
+    <hr />
+    <div>
+        @foreach (var item in Model.Personeller)
+        {
+            <li>@item.Per_Ad</li>
+        }
+    </div>
+</body>
+</html>
