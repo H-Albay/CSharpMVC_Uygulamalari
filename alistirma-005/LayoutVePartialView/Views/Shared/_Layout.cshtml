@@ -1,0 +1,21 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>_Layout</title>
+</head>
+<body>
+    <div>
+        @Html.Partial("_Header")
+        <div>@RenderBody()</div>
+        @Html.Partial("_Footer")
+        
+    </div>
+</body>
+</html>
