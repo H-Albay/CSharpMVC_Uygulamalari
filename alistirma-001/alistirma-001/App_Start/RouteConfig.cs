@@ -17,7 +17,7 @@ namespace alistirma_001
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 //Açılışta controller,metot sonra id bakıyor.Eğer bulmasa varsayılan kodu çalıştırır.
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "H", action = "Merhaba", id = UrlParameter.Optional }
             );
         }
     }
