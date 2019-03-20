@@ -1,0 +1,29 @@
+﻿@model H_Personel.Models.Entity.Departman
+@{
+    /**/
+
+    ViewBag.Title = "create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>create</h2>
+@* post etmek için yöntem:1 fakat kullanışlı değil mvcde beginformlar tercih ediliyor.
+    <form method="post" action="/Departman/create">
+        <div class="form-group">
+            <label>Departman Adı:</label>
+            <input type="text" name="Ad" id="Ad" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-success">Departman Ekle</button>
+    </form>
+*@
+
+@using (Html.BeginForm("create", "Departman", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Ad)
+        @Html.TextBoxFor(m => m.Ad, new { @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-success">Departman Ekle</button>
+
+}
+

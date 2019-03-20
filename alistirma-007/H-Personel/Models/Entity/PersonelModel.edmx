@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Ad" Type="nchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Personel">
@@ -55,7 +55,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Ad" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="Personel" Relationship="Self.FK_Personel_Departmans" FromRole="Departman" ToRole="Personel" />
         </EntityType>
