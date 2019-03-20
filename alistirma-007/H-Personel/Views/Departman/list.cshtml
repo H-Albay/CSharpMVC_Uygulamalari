@@ -1,0 +1,44 @@
+﻿@using H_Personel.Models.Entity
+@model List<Departman>
+
+@{
+    ViewBag.Title = "list";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-6"><h2>Departman Listesi</h2></div>
+        <div class="col-md-6"><a class="btn btn-success" href="#">Departman Ekle</a></div>
+    </div>
+
+
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <td class="font-weight-bold">ID</td>
+                <td class="font-weight-bold">DEPARTMAN ADI</td>
+                <td class="font-weight-bold">GUNCELLE</td>
+                <td class="font-weight-bold">SIL</td>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var departman in Model)
+            {
+                <tr>
+                    <td>@departman.Id</td>
+                    <td>@departman.Ad</td>
+                    <td><a class="btn btn-primary" href="#">Güncelle</a></td>
+                    <td><a class="btn btn-danger" href="#">Sil</a></td>
+                </tr>
+            }
+
+
+
+        </tbody>
+
+    </table>
+</div>
+
