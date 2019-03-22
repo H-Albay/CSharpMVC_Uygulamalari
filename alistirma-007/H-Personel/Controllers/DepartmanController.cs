@@ -38,7 +38,7 @@ namespace H_Personel.Controllers
             db.Departman.Add(departman);
             db.SaveChanges();
 
-            return RedirectToAction("list","Departman");
+            return RedirectToAction("list", "Departman");
         }
 
         public ActionResult edit(int id)
@@ -46,8 +46,8 @@ namespace H_Personel.Controllers
             var model = db.Departman.Find(id);
             if (model == null) { return HttpNotFound(); }
 
-            
-            return View("edit",model);
+
+            return View("edit", model);
         }
         public ActionResult edited(Departman departman)
         {
@@ -58,10 +58,7 @@ namespace H_Personel.Controllers
             }
             guncelledepartman.Ad = departman.Ad;
             db.SaveChanges();
-
-            return RedirectToAction("list","Departman");
-
-
+            return RedirectToAction("list", "Departman");
         }
 
     }
