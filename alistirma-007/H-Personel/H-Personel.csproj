@@ -209,6 +209,7 @@
     <Content Include="Scripts\jquery-3.0.0.min.map" />
     <Content Include="Views\Departman\list.cshtml" />
     <Content Include="Views\Departman\create.cshtml" />
+    <Content Include="Views\Departman\edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

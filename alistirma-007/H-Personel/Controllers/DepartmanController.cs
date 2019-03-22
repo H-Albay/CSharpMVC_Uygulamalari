@@ -41,6 +41,29 @@ namespace H_Personel.Controllers
             return RedirectToAction("list","Departman");
         }
 
+        public ActionResult edit(int id)
+        {
+            var model = db.Departman.Find(id);
+            if (model == null) { return HttpNotFound(); }
+
+            
+            return View("edit",model);
+        }
+        public ActionResult edited(Departman departman)
+        {
+            var guncelledepartman = db.Departman.Find(departman.Id);
+            if (guncelledepartman == null)
+            {
+                return HttpNotFound();
+            }
+            guncelledepartman.Ad = departman.Ad;
+            db.SaveChanges();
+
+            return RedirectToAction("list","Departman");
+
+
+        }
+
     }
 
 }

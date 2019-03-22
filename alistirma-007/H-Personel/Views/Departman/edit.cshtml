@@ -1,0 +1,22 @@
+﻿@model H_Personel.Models.Entity.Departman
+
+@{
+    ViewBag.Title = "edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h2>Departman Güncelleme Formu</h2>
+
+    @using (Html.BeginForm("edited", "Departman", FormMethod.Post))
+    {
+        <div class="form-group">
+            @Html.LabelFor(m => m.Ad)
+            @Html.TextBoxFor(m => m.Ad, new { @class = "form-control" })
+        </div>
+        @Html.HiddenFor(m=>m.Id)    //id tutmalıyım ki veriyi controllera taşıyıp işlem yapabileyim.
+        <button type="submit" class="btn btn-success">Güncelle</button>
+
+    }
+</div>
+

@@ -6,7 +6,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>create</h2>
+
 @* post etmek için yöntem:1 fakat kullanışlı değil mvcde beginformlar tercih ediliyor.
     <form method="post" action="/Departman/create">
         <div class="form-group">
@@ -16,14 +16,17 @@
         <button type="submit" class="btn btn-success">Departman Ekle</button>
     </form>
 *@
+<div class="container">
+    <h2>Depatman Ekleme Formu</h2>
 
-@using (Html.BeginForm("create", "Departman", FormMethod.Post))
-{
-    <div class="form-group">
-        @Html.LabelFor(m => m.Ad)
-        @Html.TextBoxFor(m => m.Ad, new { @class = "form-control" })
-    </div>
-    <button type="submit" class="btn btn-success">Departman Ekle</button>
+    @using (Html.BeginForm("create", "Departman", FormMethod.Post))
+    {
+        <div class="form-group">
+            @Html.LabelFor(m => m.Ad)
+            @Html.TextBoxFor(m => m.Ad, new { @class = "form-control" })
+        </div>
+        <button type="submit" class="btn btn-success">Departman Ekle</button>
 
-}
+    }
+</div>
 
