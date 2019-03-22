@@ -60,6 +60,18 @@ namespace H_Personel.Controllers
             db.SaveChanges();
             return RedirectToAction("list", "Departman");
         }
+        public ActionResult delete(int id)
+        {
+            var sildepartman = db.Departman.Find(id);
+            if (sildepartman==null)
+            {
+                return HttpNotFound();
+            }
+            db.Departman.Remove(sildepartman);
+            db.SaveChanges();
+
+            return RedirectToAction("list");
+        }
 
     }
 
