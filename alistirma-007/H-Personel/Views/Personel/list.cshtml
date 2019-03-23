@@ -1,0 +1,41 @@
+﻿@model List<H_Personel.Models.Entity.Personel>
+@{
+    ViewBag.Title = "list";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h1>Personel Listesi</h1>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <td>Ad</td>
+                <td>Soyad</td>
+                <td>Departman</td>
+                <td>Maaş</td>
+                <td>Yaş</td>
+                <td>Doğum Tarihi</td>
+                <td>Cinsiyet</td>
+                <td>Medeni Durum</td>
+            </tr>
+        </thead> 
+        <tbody>
+            @foreach (var personel in Model)
+            {
+            <tr>
+                <td>@personel.Ad</td>
+                <td>@personel.Soyad</td>
+                <td>@personel.Dep_id</td>
+                <td>@personel.Maas</td>
+                <td>@(DateTime.Now.Year-personel.DogumTarihi.Value.Year)</td>
+                <td>@personel.DogumTarihi.Value.ToString("dd-mm-yyyy")</td>
+                <td>@(personel.Cinsiyet==true?"Erkek":"Kadın")</td>
+                <td>@(personel.MedeniDurumu==true?"Evli":"Bekar")</td>
+            </tr>
+            }
+
+        </tbody>
+        
+       
+    </table>
+</div>

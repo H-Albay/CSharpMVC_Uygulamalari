@@ -18,7 +18,6 @@ namespace H_Personel.Models.Entity
         public Nullable<int> Dep_id { get; set; }
         public string Ad { get; set; }
         public string Soyad { get; set; }
-        public Nullable<byte> Yas { get; set; }
         public Nullable<short> Maas { get; set; }
         public Nullable<System.DateTime> DogumTarihi { get; set; }
         public Nullable<bool> Cinsiyet { get; set; }

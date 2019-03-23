@@ -4,12 +4,12 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Departman">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Ad" Type="nchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Personel">
@@ -20,7 +20,6 @@
           <Property Name="Dep_id" Type="int" />
           <Property Name="Ad" Type="nchar" MaxLength="50" />
           <Property Name="Soyad" Type="nchar" MaxLength="50" />
-          <Property Name="Yas" Type="tinyint" />
           <Property Name="Maas" Type="smallint" />
           <Property Name="DogumTarihi" Type="smalldatetime" />
           <Property Name="Cinsiyet" Type="bit" />
@@ -46,8 +45,7 @@
             <End Role="Personel" EntitySet="Personel" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -57,8 +55,16 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Ad" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="Personel" Relationship="Self.FK_Personel_Departmans" FromRole="Departman" ToRole="Personel" />
+          <NavigationProperty Name="Personel" Relationship="DatabaseModel.FK_Personel_Departmans" FromRole="Departman" ToRole="Personel" />
         </EntityType>
+        <EntityContainer Name="DatabaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Departman" EntityType="Self.Departman" />
+          <EntitySet Name="Personel" EntityType="DatabaseModel.Personel" />
+          <AssociationSet Name="FK_Personel_Departmans" Association="DatabaseModel.FK_Personel_Departmans">
+            <End Role="Departman" EntitySet="Departman" />
+            <End Role="Personel" EntitySet="Personel" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="Personel">
           <Key>
             <PropertyRef Name="Id" />
@@ -67,16 +73,15 @@
           <Property Name="Dep_id" Type="Int32" />
           <Property Name="Ad" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
           <Property Name="Soyad" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-          <Property Name="Yas" Type="Byte" />
           <Property Name="Maas" Type="Int16" />
           <Property Name="DogumTarihi" Type="DateTime" Precision="0" />
           <Property Name="Cinsiyet" Type="Boolean" />
           <Property Name="MedeniDurumu" Type="Boolean" />
-          <NavigationProperty Name="Departman" Relationship="Self.FK_Personel_Departmans" FromRole="Personel" ToRole="Departman" />
+          <NavigationProperty Name="Departman" Relationship="DatabaseModel.FK_Personel_Departmans" FromRole="Personel" ToRole="Departman" />
         </EntityType>
         <Association Name="FK_Personel_Departmans">
-          <End Role="Departman" Type="Self.Departman" Multiplicity="0..1" />
-          <End Role="Personel" Type="Self.Personel" Multiplicity="*" />
+          <End Type="DatabaseModel.Departman" Role="Departman" Multiplicity="0..1" />
+          <End Type="DatabaseModel.Personel" Role="Personel" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Departman">
               <PropertyRef Name="Id" />
@@ -86,14 +91,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DatabaseEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Departman" EntityType="Self.Departman" />
-          <EntitySet Name="Personel" EntityType="Self.Personel" />
-          <AssociationSet Name="FK_Personel_Departmans" Association="Self.FK_Personel_Departmans">
-            <End Role="Departman" EntitySet="Departman" />
-            <End Role="Personel" EntitySet="Personel" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -111,15 +108,14 @@
           <EntitySetMapping Name="Personel">
             <EntityTypeMapping TypeName="DatabaseModel.Personel">
               <MappingFragment StoreEntitySet="Personel">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Dep_id" ColumnName="Dep_id" />
-                <ScalarProperty Name="Ad" ColumnName="Ad" />
-                <ScalarProperty Name="Soyad" ColumnName="Soyad" />
-                <ScalarProperty Name="Yas" ColumnName="Yas" />
-                <ScalarProperty Name="Maas" ColumnName="Maas" />
-                <ScalarProperty Name="DogumTarihi" ColumnName="DogumTarihi" />
-                <ScalarProperty Name="Cinsiyet" ColumnName="Cinsiyet" />
                 <ScalarProperty Name="MedeniDurumu" ColumnName="MedeniDurumu" />
+                <ScalarProperty Name="Cinsiyet" ColumnName="Cinsiyet" />
+                <ScalarProperty Name="DogumTarihi" ColumnName="DogumTarihi" />
+                <ScalarProperty Name="Maas" ColumnName="Maas" />
+                <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Dep_id" ColumnName="Dep_id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
