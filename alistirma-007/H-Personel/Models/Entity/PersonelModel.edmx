@@ -57,7 +57,7 @@
           <Property Name="Ad" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="Personel" Relationship="DatabaseModel.FK_Personel_Departmans" FromRole="Departman" ToRole="Personel" />
         </EntityType>
-        <EntityContainer Name="DatabaseEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DatabaseEntities" annotation:LazyLoadingEnabled="false">
           <EntitySet Name="Departman" EntityType="Self.Departman" />
           <EntitySet Name="Personel" EntityType="DatabaseModel.Personel" />
           <AssociationSet Name="FK_Personel_Departmans" Association="DatabaseModel.FK_Personel_Departmans">

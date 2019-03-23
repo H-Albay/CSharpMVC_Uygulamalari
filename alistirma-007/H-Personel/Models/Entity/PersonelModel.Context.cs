@@ -18,6 +18,7 @@ namespace H_Personel.Models.Entity
         public DatabaseEntities()
             : base("name=DatabaseEntities")
         {
+            this.Configuration.LazyLoadingEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
