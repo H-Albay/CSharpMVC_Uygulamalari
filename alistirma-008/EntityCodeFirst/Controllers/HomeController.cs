@@ -13,23 +13,25 @@ namespace EntityCodeFirst.Controllers
     {
 
 
-        DataContext db = new DataContext();
-
-        //list<kategori> kategoriler = new list<kategori>()
-        //{
-        //    new kategori(){ıd=1,kategoriadi="telefon"},
-        //    new kategori(){ıd=2,kategoriadi="bilgisayar"},
-        //    new kategori(){ıd=3,kategoriadi="tablet"}
-        //};
+        DataContext context = new DataContext();
 
 
-        
+
+        List<urun> urunler = new List<urun>
+        {
+            new urun(){UrunAdi="Bardak",StokAdeti=99,Fiyat=30},
+            new urun(){UrunAdi="Kalem",StokAdeti=19,Fiyat=20},
+            new urun(){UrunAdi="Silgi",StokAdeti=9,Fiyat=10}
+        };
+          
         public ActionResult Index()
         {
-            kategori k = new kategori();
-            k.KategoriAdi = "Beyaz Eşya";
-            db.kategoriler.Add(k);
-            db.SaveChanges();
+            foreach (var urun in urunler)
+            {
+                context.urunler.Add(urun);
+            }
+            context.SaveChanges();
+
             return View();
         }
     }

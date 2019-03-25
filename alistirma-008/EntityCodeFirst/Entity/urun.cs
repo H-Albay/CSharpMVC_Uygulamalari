@@ -9,7 +9,7 @@ namespace EntityCodeFirst.Entity
     {
         public int Id { get; set; }
         public string UrunAdi { get; set; }
-        public string Fiyat { get; set; }
-        public string StokAdeti { get; set; }
+        public int Fiyat { get; set; }
+        public int StokAdeti { get; set; }
     }
 }
