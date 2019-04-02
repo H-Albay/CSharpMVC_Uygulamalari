@@ -1,5 +1,4 @@
-$$ C# MVC UYGULAMALARI$$ CSharpMVC_Uygulamalari
-Bu bölümde Temel seviyede örnekler bulunmaktadır.
+<h1 align="center">C# MVC UYGULAMALARI</h1> 
 
 1-Alistirma-001: 
 
