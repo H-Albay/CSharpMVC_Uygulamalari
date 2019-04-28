@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PetWorld.Entity;
+using PetWorld.Models;
+
 namespace PetWorld.Controllers
 {
     public class HomeController : Controller
@@ -12,15 +14,52 @@ namespace PetWorld.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            return View(db.Products.Where(i=>i.IsApproved && i.IsHome).ToList());  // 
+            var urunler = db.Products
+                .Where(i => i.IsApproved && i.IsHome)
+                .Select(i => new ProductModel()
+                {
+                    Id = i.Id,
+                    Name = i.Name.Length > 50 ? i.Name.Substring(0, 47) + "..." : i.Name,
+                    Description = i.Description.Length > 100 ? i.Description.Substring(0, 97) + "..." : i.Description,
+                    Stock = i.Stock,
+                    Price = i.Price,
+                    CategoryId = i.CategoryId,
+                    Image = i.Image
+                }).ToList();
+
+            return View(urunler);
+
         }
-        public ActionResult Details()
+        public ActionResult Details(int id)
         {
-            return View(db.Products.Where(i => i.IsApproved).FirstOrDefault());
+            return View(db.Products.Where(i => i.Id == id).ToList());
         }
-        public ActionResult List()
+        public ActionResult List(int? id)
         {
-            return View(db.Products.Where(i=>i.IsApproved).ToList());
+            var urunler = db.Products
+                .Where(i => i.IsApproved)
+                .Select(i => new ProductModel()
+                {
+                    Id = i.Id,
+                    Name = i.Name.Length > 50 ? i.Name.Substring(0, 47) + "..." : i.Name,
+                    Description = i.Description.Length > 100 ? i.Description.Substring(0, 97) + "..." : i.Description,
+                    Stock = i.Stock,
+                    Price = i.Price,
+                    CategoryId = i.CategoryId,
+                    Image = i.Image == null ? "/holder.js/300x200" : i.Image
+                }).AsQueryable();
+            if (id !=null)
+            {
+                urunler = urunler.Where(i => i.CategoryId == id);
+            }
+
+            return View(urunler.ToList());
+        }
+
+        //partialView oluşturmak
+        public PartialViewResult GetCategories()
+        {
+            return PartialView(db.Categories.ToList());
         }
     }
 }

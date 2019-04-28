@@ -1,0 +1,19 @@
+﻿@using PetWorld.Entity
+@model IEnumerable<Category>
+
+<ul class="list-group">
+    <li class="list-group-item-dark text-center">
+        <a href="/Home/List/"><font size="5"> Tümü..</font></a>
+        
+    </li>
+    @foreach (var item in Model)
+    {
+        <li class="list-group-item text-center">
+            <a href="/Home/List/@item.Id">
+                <font size="5"> @item.Name..</font>
+                <i class="fas fa-pen" style="font-size: 20px;"></i>
+            </a>
+        </li>
+    }
+    <li></li>
+</ul>

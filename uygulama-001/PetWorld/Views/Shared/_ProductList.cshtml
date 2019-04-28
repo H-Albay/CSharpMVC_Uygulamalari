@@ -1,5 +1,5 @@
-﻿@using PetWorld.Entity
-@model IEnumerable<Product>
+﻿@using PetWorld.Models;
+@model IEnumerable<ProductModel>
 
 <div class="row">
     @foreach (var urun in Model)
@@ -24,11 +24,13 @@
                                 <div class="product_price">
                                     <h4>
                                         <a href="/Home/Details/@urun.Id">@urun.Name</a>
+
                                     </h4>
+                                    <span>@urun.Description</span>
                                     <div class="row">
                                         <div class="col-6">
                                             <div class="grid-price mt-2">
-                                                <span class="money ">@urun.Price TL</span>
+                                                <span class="money "><i class="fas fa-lira-sign" style="font-size: 20px;">@urun.Price</i></span>
                                             </div>
                                             <ul class="stars">
                                                 <li>
