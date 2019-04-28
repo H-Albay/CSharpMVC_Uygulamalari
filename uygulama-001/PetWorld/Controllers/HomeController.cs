@@ -16,11 +16,11 @@ namespace PetWorld.Controllers
         }
         public ActionResult Details()
         {
-            return View();
+            return View(db.Products.Where(i => i.IsApproved).FirstOrDefault());
         }
         public ActionResult List()
         {
-            return View(db.Products.Where(i=>i.IsApproved).FirstOrDefault());
+            return View(db.Products.Where(i=>i.IsApproved).ToList());
         }
     }
 }

@@ -1,0 +1,83 @@
+﻿@using PetWorld.Entity
+@model IEnumerable<Product>
+
+<div class="row">
+    @foreach (var urun in Model)
+    {
+        <div class="col-lg-4 col-md-6 col-sm-6 product-men women_two">
+
+            <div class="product-toys-info">
+                <div class="men-pro-item">
+                    <div class="men-thumb-item">
+                        <img src="/Upload/@urun.Image" class="img-thumbnail img-fluid" alt="@urun.Name">
+                        <div class="men-cart-pro">
+                            <div class="inner-men-cart-pro">
+                                <a href="/Home/Details/@urun.Id" class="link-product-add-cart">Ürün Detay</a>
+                            </div>
+                        </div>
+                        <span class="product-new-top">Yeni</span>
+                    </div>
+
+                    <div class="item-info-product">
+                        <div class="info-product-price">
+                            <div class="">
+                                <div class="product_price">
+                                    <h4>
+                                        <a href="/Home/Details/@urun.Id">@urun.Name</a>
+                                    </h4>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="grid-price mt-2">
+                                                <span class="money ">@urun.Price TL</span>
+                                            </div>
+                                            <ul class="stars">
+                                                <li>
+                                                    <a href="#">
+                                                        <i class="fas fa-star"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <i class="fas fa-star"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <i class="fas fa-star"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <i class="fas fa-star"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <i class="far fa-star-half-o"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-6 single-item hvr-outline-out pt-2 ">
+                                            <form action="#" method="post">
+                                                <button type="submit" class=" ">
+                                                    <i class="fas fa-cart-plus"></i>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="clearfix"></div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    }
+</div>

@@ -11,6 +11,7 @@ namespace PetWorld.Entity
         public DataContext():base("dataConnection")  {
             //projede varsayılan veritabanını oluşturmaması için kullanılıdı.
             //connectionStrings dataConnection isimde olanı oluştur
+            Database.SetInitializer(new DataInitializer());
         }
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
