@@ -1,0 +1,18 @@
+﻿@model Etkinlik_WebApi.Models.DavetiyeModel
+
+@{ 
+    ViewBag.Title = "Teşekkür Ederim.";
+}
+<h1>Teşekkür, @Model.Ad</h1>
+
+<div class="lead">
+    @if (Model.KatilmaDurumu ==true)
+    {
+        @:Gelmene Çok Sevindim :)
+        @Html.Action("Katilanlar","Home")
+    }
+    else
+    {
+        @:Gelemeyecek Olmana Çok üzüldüm :(
+    }
+</div>
