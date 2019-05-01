@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Etkinlik-WebApi", "Etkinlik-WebApi\Etkinlik-WebApi.csproj", "{A2B25797-1248-4A31-9742-881EC105367F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Etkinlik-MVC", "Etkinlik-WebApi\Etkinlik-MVC.csproj", "{A2B25797-1248-4A31-9742-881EC105367F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Etkinlik-JQueryApp", "Etkinlik-JQueryApp\Etkinlik-JQueryApp.csproj", "{EDEF9A82-C0C1-4174-8E1B-B517B3E7A18A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{A2B25797-1248-4A31-9742-881EC105367F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A2B25797-1248-4A31-9742-881EC105367F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A2B25797-1248-4A31-9742-881EC105367F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDEF9A82-C0C1-4174-8E1B-B517B3E7A18A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDEF9A82-C0C1-4174-8E1B-B517B3E7A18A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDEF9A82-C0C1-4174-8E1B-B517B3E7A18A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDEF9A82-C0C1-4174-8E1B-B517B3E7A18A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
