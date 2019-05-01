@@ -11,7 +11,8 @@
         <img id="ajax-loader" src="ajax-loading.gif" style="display:none; width:100px;" />
         <hr />
         <div id="results" class="alert alert-success" style="display:none;">
-            Bilgileriniz kayıt edildi. <b>Yönlendiriliyorsunuz...</b>
+            <h3>Bilgileriniz kayıt edildi. </h3>
+            <h4><span id="Gelenler"></span></h4>
         </div>
         <div class="row">
             <div class="col-md-12">
@@ -50,10 +51,19 @@
     </div>
 
     <script>
+        function Getkatilanlar() {
+            var html = [];
+            $.getJSON("http://localhost:54378/api/Davetiye/GetKatilanlar", function (data) {
+                $.each(data, function (key, value) {
+                    html.push("<label class='label label-success'>" + value.Ad+"</label> ");
+                });
+                $("#Gelenler").empty().append(html);
+            });
+        } 
         $("#DavetiyeForm").submit(function (event) {
             event.preventDefault();
             $.ajax({
-                url: "http://localhost:54378/api/Davetiye/Ekle ",
+                url: "http://localhost:54378/api/Davetiye/Ekle",
                 type: "Post",
                 data: {
                     Ad: $("#Ad").val(),
@@ -61,15 +71,19 @@
                     KatilmaDurumu: $("#KatilmaDurumu").val(),
 
                 },
-                
+
                 beforeSend: function () {
                     $("#ajax-loader").show();
                 },
                 complete: function () {
                     $("#ajax-loader").hide();
                 },
-                success: function () {
+                success: function (data) {
+                    if ($("#KatilmaDurumu").val() == "true") {
+                        Getkatilanlar()
+                    }
                     $("#results").show();
+
                 },
                 error: function () {
                     alert("hata oluştu.");
