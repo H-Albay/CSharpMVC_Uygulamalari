@@ -1,19 +1,63 @@
 ﻿@using PetWorld.Entity
 @model IEnumerable<Category>
+@{
+    var selectedCategory = Url.RequestContext.RouteData.Values["id"];
+}
 
+
+ 
 <ul class="list-group">
-    <li class="list-group-item-dark text-center">
-        <a href="/Home/List/"><font size="5"> Tümü..</font></a>
-        
-    </li>
+    @if (selectedCategory == null)
+    {
+    <a href="/Home/List/" class="list-group-item list-group-item-action active">
+        Tümü
+        <i class="far fa-check-circle"></i>
+    </a>
+    }
+    else
+    {
+
+        <a href="/Home/List/" class="list-group-item list-group-item-action">Tümü..</a>
+    }
+
+
+
     @foreach (var item in Model)
     {
-        <li class="list-group-item text-center">
-            <a href="/Home/List/@item.Id">
-                <font size="5"> @item.Name..</font>
-                <i class="fas fa-pen" style="font-size: 20px;"></i>
-            </a>
-        </li>
+        if (selectedCategory != null)
+        {
+            if (item.Id == int.Parse(selectedCategory.ToString()))
+            {
+
+
+        <a href="/Home/List/@item.Id" class="list-group-item list-group-item-action active">
+            @item.Name
+            <i class="far fa-check-circle"></i>
+        </a>
+
+            }
+            else
+            {
+
+        <a href="/Home/List/@item.Id" class="list-group-item list-group-item-action">
+            @item.Name
+           
+        </a>
+            }
+        }
+        else
+        {
+            <li class="list-group-item  ">
+                <a href="/Home/List/@item.Id" class="text-dark">
+                    <font size="3"> @item.Name</font>
+                    
+                </a>
+            </li>
+        }
+
+
+
+
     }
-    <li></li>
+
 </ul>
