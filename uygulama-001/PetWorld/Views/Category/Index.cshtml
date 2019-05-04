@@ -1,9 +1,9 @@
 ﻿@model IEnumerable<PetWorld.Entity.Category>
-
 @{
-    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-<div class="container pb-4">
+
+<div class="container pb-5">
     <h2>Kategori Listesi</h2>
     <hr />
     <p>
@@ -31,8 +31,8 @@
                     @Html.DisplayFor(modelItem => item.Description)
                 </td>
                 <td>
-                    @Html.ActionLink("Güncelle", "Edit", new { id = item.Id },new {@class="btn btn-primary btn-sm" }) 
-                    @Html.ActionLink("Sil", "Delete", new { id = item.Id },new { @class = "btn btn-danger btn-sm" })
+                    @Html.ActionLink("Güncelle", "Edit", new { id = item.Id }, new { @class = "btn btn-primary btn-sm" })
+                    @Html.ActionLink("Sil", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
                 </td>
             </tr>
         }

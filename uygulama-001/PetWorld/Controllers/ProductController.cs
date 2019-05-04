@@ -10,107 +10,112 @@ using PetWorld.Entity;
 
 namespace PetWorld.Controllers
 {
-    public class CategoryController : Controller
+    public class ProductController : Controller
     {
         private DataContext db = new DataContext();
 
-        // GET: Category
+        // GET: Product
         public ActionResult Index()
         {
-            return View(db.Categories.ToList());
+            var products = db.Products.Include(p => p.Category);
+            return View(products.ToList());
         }
 
-        // GET: Category/Details/5
+        // GET: Product/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = db.Categories.Find(id);
-            if (category == null)
+            Product product = db.Products.Find(id);
+            if (product == null)
             {
                 return HttpNotFound();
             }
-            return View(category);
+            return View(product);
         }
 
-        // GET: Category/Create
+        // GET: Product/Create
         public ActionResult Create()
         {
+            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name");
             return View();
         }
 
-        // POST: Category/Create
-        // Aşırı gönderim saldırılarından korunmak için, lütfen bağlamak istediğiniz belirli özellikleri etkinleştirin, 
-        // daha fazla bilgi için https://go.microsoft.com/fwlink/?LinkId=317598 sayfasına bakın.
+        // POST: Product/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Description")] Category category)
+        public ActionResult Create([Bind(Include = "Id,Name,Description,Image,Price,Stock,IsHome,IsApproved,CategoryId")] Product product)
         {
             if (ModelState.IsValid)
             {
-                db.Categories.Add(category);
+                db.Products.Add(product);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(category);
+            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", product.CategoryId);
+            return View(product);
         }
 
-        // GET: Category/Edit/5
+        // GET: Product/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = db.Categories.Find(id);
-            if (category == null)
+            Product product = db.Products.Find(id);
+            if (product == null)
             {
                 return HttpNotFound();
             }
-            return View(category);
+            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", product.CategoryId);
+            return View(product);
         }
 
-        // POST: Category/Edit/5
-        // Aşırı gönderim saldırılarından korunmak için, lütfen bağlamak istediğiniz belirli özellikleri etkinleştirin, 
-        // daha fazla bilgi için https://go.microsoft.com/fwlink/?LinkId=317598 sayfasına bakın.
+        // POST: Product/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Description")] Category category)
+        public ActionResult Edit([Bind(Include = "Id,Name,Description,Image,Price,Stock,IsHome,IsApproved,CategoryId")] Product product)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(category).State = EntityState.Modified;
+                db.Entry(product).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(category);
+            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", product.CategoryId);
+            return View(product);
         }
 
-        // GET: Category/Delete/5
+        // GET: Product/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = db.Categories.Find(id);
-            if (category == null)
+            Product product = db.Products.Find(id);
+            if (product == null)
             {
                 return HttpNotFound();
             }
-            return View(category);
+            return View(product);
         }
 
-        // POST: Category/Delete/5
+        // POST: Product/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Category category = db.Categories.Find(id);
-            db.Categories.Remove(category);
+            Product product = db.Products.Find(id);
+            db.Products.Remove(product);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -122,10 +127,6 @@ namespace PetWorld.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
-        }
-        public ActionResult Empty()
-        {
-            return View();
         }
     }
 }
