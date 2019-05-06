@@ -10,6 +10,7 @@ using PetWorld.Entity;
 
 namespace PetWorld.Controllers
 {
+    [Authorize(Roles ="admin")]
     public class CategoryController : Controller
     {
         private DataContext db = new DataContext();
