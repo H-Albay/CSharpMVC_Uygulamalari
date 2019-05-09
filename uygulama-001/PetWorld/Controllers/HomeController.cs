@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using PetWorld.Entity;
@@ -32,7 +33,8 @@ namespace PetWorld.Controllers
         }
         public ActionResult Details(int id)
         {
-            return View(db.Products.Where(i => i.Id == id).ToList());
+         
+            return View(db.Products.Where(i => i.Id == id).FirstOrDefault());
         }
         public ActionResult List(int? id)
         {

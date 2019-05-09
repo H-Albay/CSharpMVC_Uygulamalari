@@ -1,0 +1,19 @@
+﻿@model PetWorld.Models.Cart
+
+
+<li class="toyscart toyscart2 cart cart box_1">
+    <form action="" method="post" class="last">
+        <input type="hidden" name="cmd" value="_cart">
+        <input type="hidden" name="display" value="1">
+
+        <a href="/Cart" class="top_toys_cart">
+            <span class="fas fa-cart-arrow-down">(@Model.CartLines.Count)</span>
+        </a>
+
+
+    </form>
+
+</li>
+
+
+

@@ -61,7 +61,7 @@
             <div class="container-fluid">
                 <div class="hedder-up row">
                     <div class="col-lg-3 col-md-3 logo-head">
-                        <h1><a class="navbar-brand" href="index.html">Pet-Shop</a></h1>
+                        <h1><a class="navbar-brand" href="/">Pet-Shop</a></h1>
                     </div>
                     <div class="col-lg-5 col-md-6 search-right">
                         <form class="form-inline my-lg-0">
@@ -78,19 +78,12 @@
                                 <li>
                                     <button type="button" data-toggle="modal" data-target="#exampleModal"> <span class="far fa-user"></span></button>
                                 </li>
-                                <li class="toyscart toyscart2 cart cart box_1">
-                                    <form action="#" method="post" class="last">
-                                        <input type="hidden" name="cmd" value="_cart">
-                                        <input type="hidden" name="display" value="1">
-                                        <button class="top_toys_cart" type="submit" name="submit" value="">
-                                            <span class="fas fa-cart-arrow-down"></span>
-                                        </button>
-                                       
-                                    </form>
-                                </li>
+                               
+                                @Html.Action("Summary", "Cart")
                                 <li> @Html.Partial("_LoginPartial")</li>
-                              
-                                
+ 
+
+
                             </ul>
                             
                         </div>
@@ -206,7 +199,7 @@
     @RenderBody()
     <!-- //about -->
     <!--new Arrivals -->
-    <section class="blog py-lg-4 py-md-3 py-sm-3 py-3">
+    <section class="blog py-lg-4 py-md-3 py-sm-3 py-3 bg-white ">
         <div class="container py-lg-5 py-md-4 py-sm-4 py-3">
             <h3 class="title clr text-center mb-lg-5 mb-md-4 mb-sm-4 mb-3">New Arrivals</h3>
             <div class="slid-img">
